@@ -9,21 +9,22 @@
     "lint": "next lint",
     "eslint": "eslint --fix",
     "format": "prettier --write .",
+    "lint-staged": "lint-staged",
     "start": "next start",
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "src/**/*.{html,ts,scss}": [
-      "prettier --write"
-    ],
-    "src/**/*.ts": [
-      "eslint --fix"
-    ]
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js, jsx,ts,tsx}": [
+      "eslint --quiet --fix"
+    ],
+    "*.{json,js,ts,jsx,tsx,html}": [
+      "prettier --write --ignore-unknown"
+    ]
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.5",
