@@ -7,10 +7,23 @@
     "dev": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "eslint": "eslint .",
+    "eslint": "eslint --fix",
     "format": "prettier --write .",
     "start": "next start",
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{html,ts,scss}": [
+      "prettier --write"
+    ],
+    "src/**/*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.5",
